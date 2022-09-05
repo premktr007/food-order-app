@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import CartContext from './cart-context';
+import CartContext from './Cart-context';
 
 const defaultCartState = {
   items: [],
@@ -55,7 +55,7 @@ const cartReducer = (state, action) => {
     };
   }
 
-  return defaultCartState;
+  return defaultCartState;  //for clearing the cart after order sent succesfully
 };
 
 const CartProvider = (props) => {
@@ -72,11 +72,16 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: 'REMOVE', id: id });
   };
 
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: 'CLEAR' });
+  }
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    clearCart: clearCartHandler
   };
 
   return (

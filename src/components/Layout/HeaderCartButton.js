@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import CartIcon from '../Cart/CartIcon';
-import CartContext from '../../store/cart-context';
+import CartContext from '../../store/Cart-context';
 import classes from './HeaderCartButton.module.css';
 
 const HeaderCartButton = (props) => {
@@ -21,6 +21,7 @@ const HeaderCartButton = (props) => {
     if (items.length === 0) {
       return;
     }
+    //if cart has items when the app loads or reloads
     setBtnIsHighlighted(true);
 
     const timer = setTimeout(() => {
